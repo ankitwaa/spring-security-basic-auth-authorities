@@ -11,7 +11,8 @@ public class CustomWebSecurityConfigurerAdaptor extends WebSecurityConfigurerAda
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
         http.authorizeRequests().mvcMatchers("**/post/**").hasAuthority("write").and()
-                .authorizeRequests().mvcMatchers("**/get/**").hasAuthority("read");
+                .authorizeRequests().mvcMatchers("**/get/**").hasAuthority("read").and()
+                .authorizeRequests().mvcMatchers("**/delete/**").access("hasAuthority('delete')");
     }
 
 }
