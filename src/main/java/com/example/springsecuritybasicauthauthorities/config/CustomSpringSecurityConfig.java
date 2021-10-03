@@ -12,12 +12,18 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 public class CustomSpringSecurityConfig {
 
+    /**
+     * To Test this example
+     * Please used password  - ankitr
+     *
+     * @return
+     */
     @Bean
     public UserDetailsService userDetailsService(){
-        UserDetails userDetails = User.withUsername("ankit").password("{noop}ankit").
+        UserDetails userDetails = User.withUsername("ankit").password("{bcrypt}$2a$12$aK98IYK9Uaw1gAOZRZA2xunckjCf57hZkt3uarrbT/bONVUXMbgJW").
                 authorities("read", "write", "delete").build();
 
-        UserDetails userDetails1 = User.withUsername("ankitr").password("{noop}ankitr").
+        UserDetails userDetails1 = User.withUsername("ankitr").password("{bcrypt}$2a$12$aK98IYK9Uaw1gAOZRZA2xunckjCf57hZkt3uarrbT/bONVUXMbgJW").
                 authorities("read").build();
 
         InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();
